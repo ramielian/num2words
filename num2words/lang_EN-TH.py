@@ -24,27 +24,27 @@ class Num2Word_EN(lang_EU.Num2Word_EU):
             self.cards[10**n] = word + "illion"
 
     def setup(self):
-        self.negword = "minus "
-        self.pointword = "point"
-        self.errmsg_nornum = "Only numbers may be converted to words."
+        self.negword = "ลบ"
+        self.pointword = "จุด"
+        self.errmsg_nornum = "ตัวเลขเท่านั้นอาจจะเปลี่ยนคำพูด."
         self.exclude_title = ["and", "point", "minus"]
 
-        self.mid_numwords = [(1000, "thousand"), (100, "hundred"),
-                             (90, "ninety"), (80, "eighty"), (70, "seventy"),
-                             (60, "sixty"), (50, "fifty"), (40, "forty"),
-                             (30, "thirty")]
-        self.low_numwords = ["twenty", "nineteen", "eighteen", "seventeen",
-                             "sixteen", "fifteen", "fourteen", "thirteen",
-                             "twelve", "eleven", "ten", "nine", "eight",
-                             "seven", "six", "five", "four", "three", "two",
-                             "one", "zero"]
-        self.ords = { "one"    : "first",
-                      "two"    : "second",
-                      "three"  : "third",
-                      "five"   : "fifth",
-                      "eight"  : "eighth",
-                      "nine"   : "ninth",
-                      "twelve" : "twelfth" }
+        self.mid_numwords = [(1000, "พัน"), (100, "ร้อย"),
+                             (90, "เก้าสิบ"), (80, "แปดสิบ"), (70, "เจ็ดสิบ"),
+                             (60, "หกสิบ"), (50, "ห้าสิบ"), (40, "สี่สิบ"),
+                             (30, "สามสิบ")]
+        self.low_numwords = ["ยี่สิบ", "สิบเก้า", "สิบแปด", "สิบเจ็ด",
+                             "สิบหก", "สิบห้า", "สิบสี่", "สิบสาม",
+                             "สิบสอง", "สิบเอ็ด", "สิบ", "เก้า", "แปด",
+                             "เจ็ด", "หก", "ห้า", "สี่", "สาม", "สอง",
+                             "หนึ่ง", "ศูนย์"]
+        self.ords = { "one"    : "แรก",
+                      "two"    : "ที่สอง",
+                      "three"  : "ที่สาม",
+                      "five"   : "ที่ห้า",
+                      "eight"  : "ที่แปด",
+                      "nine"   : "ที่เก้า",
+                      "twelve" : "ที่สิบสอง" }
 
 
     def merge(self, (ltext, lnum), (rtext, rnum)):
@@ -83,11 +83,11 @@ class Num2Word_EN(lang_EU.Num2Word_EU):
     def to_year(self, val, longval=True):
         if not (val//100)%10:
             return self.to_cardinal(val)
-        return self.to_splitnum(val, hightxt="hundred", jointxt="and",
+        return self.to_splitnum(val, hightxt="ร้อย", jointxt="กับ",
                                 longval=longval)
 
     def to_currency(self, val, longval=True):
-        return self.to_splitnum(val, hightxt="dollar/s", lowtxt="cent/s",
+        return self.to_splitnum(val, hightxt="บาท", lowtxt="สตางค์",
                                 jointxt="and", longval=longval, cents = True)
 
 
